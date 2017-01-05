@@ -69,7 +69,26 @@ class Test_Merge_Sort(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-    def test_anything_random(self):
+    def test_random_and_small(self):
+        expected = range(100)
+        unsorted = list(expected)
+        random.shuffle(unsorted)
+
+        actual = merge_sort(unsorted)
+
+        self.assertEqual(expected, actual)
+
+    def test_random_and_small_a_bunch_of_times(self):
+        for _ in range(100):
+            expected = range(100)
+            unsorted = list(expected)
+            random.shuffle(unsorted)
+
+            actual = merge_sort(unsorted)
+
+            self.assertEqual(expected, actual)
+
+    def test_random_and_big(self):
         expected = range(10000)
         unsorted = list(expected)
         random.shuffle(unsorted)
