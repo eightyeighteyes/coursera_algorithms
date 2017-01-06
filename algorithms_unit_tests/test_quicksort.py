@@ -4,6 +4,8 @@ import unittest
 
 from algorithms.quicksort import quicksort, partition, swap, median_of_three, QuickSort
 
+DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data')
+
 
 class Test_Quicksort(unittest.TestCase):
     def test_single_element(self):
@@ -348,8 +350,7 @@ class Test_QuickSort_Obj(unittest.TestCase):
 
 class Test_QuickSort_Obj_Pivots_On_Real_Data(unittest.TestCase):
     def setUp(self):
-        data_path = os.path.join(os.path.dirname(__file__), '..', 'data')
-        with open(os.path.join(data_path, 'quicksort.txt'), 'r') as data_file:
+        with open(os.path.join(DATA_PATH, 'quicksort.txt'), 'r') as data_file:
             test_data = data_file.readlines()
 
         self.data = [int(line.strip()) for line in test_data]
@@ -377,3 +378,81 @@ class Test_QuickSort_Obj_Pivots_On_Real_Data(unittest.TestCase):
         actual = QuickSort(self.data, pivot='random')
 
         self.assertEqual(expected, actual)
+
+
+class Test_QuickSort_Obj_Pivots_DataSize_10(unittest.TestCase):
+    def setUp(self):
+        with open(os.path.join(DATA_PATH, '10.txt'), 'r') as data_file:
+            test_data = data_file.readlines()
+
+        self.data = [int(line.strip()) for line in test_data]
+
+    def test_pivot_first_10(self):
+        expected_comparisons = 25
+        actual_comparisons = QuickSort(self.data, pivot='first').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+    def test_pivot_last_10(self):
+        expected_comparisons = 29
+        actual_comparisons = QuickSort(self.data, pivot='last').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+    def test_pivot_median_10(self):
+        expected_comparisons = 21
+        actual_comparisons = QuickSort(self.data, pivot='median').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+
+class Test_QuickSort_Obj_Pivots_DataSize_100(unittest.TestCase):
+    def setUp(self):
+        with open(os.path.join(DATA_PATH, '100.txt'), 'r') as data_file:
+            test_data = data_file.readlines()
+
+        self.data = [int(line.strip()) for line in test_data]
+
+    def test_pivot_first_100(self):
+        expected_comparisons = 615
+        actual_comparisons = QuickSort(self.data, pivot='first').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+    def test_pivot_last_100(self):
+        expected_comparisons = 587
+        actual_comparisons = QuickSort(self.data, pivot='last').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+    def test_pivot_median_100(self):
+        expected_comparisons = 518
+        actual_comparisons = QuickSort(self.data, pivot='median').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+
+class Test_QuickSort_Obj_Pivots_DataSize_1000(unittest.TestCase):
+    def setUp(self):
+        with open(os.path.join(DATA_PATH, '1000.txt'), 'r') as data_file:
+            test_data = data_file.readlines()
+
+        self.data = [int(line.strip()) for line in test_data]
+
+    def test_pivot_first_1000(self):
+        expected_comparisons = 10297
+        actual_comparisons = QuickSort(self.data, pivot='first').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+    def test_pivot_last_1000(self):
+        expected_comparisons = 10184
+        actual_comparisons = QuickSort(self.data, pivot='last').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
+
+    def test_pivot_median_1000(self):
+        expected_comparisons = 8921
+        actual_comparisons = QuickSort(self.data, pivot='median').comparisons
+
+        self.assertEqual(expected_comparisons, actual_comparisons)
