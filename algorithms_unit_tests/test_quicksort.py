@@ -177,7 +177,7 @@ class Test_Median_of_Three(unittest.TestCase):
 
     def test_even_array_elements(self):
         array = [8, 2, 4, 5, 7, 1]
-        median = median_of_three(array, 0, 6)
+        median = median_of_three(array, 0, 5)
         self.assertEqual(2, median)
 
 

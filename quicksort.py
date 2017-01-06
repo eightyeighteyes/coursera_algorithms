@@ -67,16 +67,16 @@ class QuickSort(list):
 
 
 def median_of_three(array, start, end):
-    sub = array[start:end + 1]
-    if len(sub) % 2:
-        mid = sub[len(sub) / 2]
+    diff = end - start + 1
+    if diff % 2:
+        mid = start + (diff / 2)
     else:
-        mid = sub[len(sub) / 2 - 1]
+        mid = start + (diff / 2) - 1
 
-    sub = [sub[0], mid, sub[-1]]
+    sub = [(array[start], start), (array[mid], mid), (array[end], end)]
     sub.sort()
 
-    return array.index(sub[1])
+    return sub[1][1]
 
 
 def quicksort(array, start=0, end=None):
