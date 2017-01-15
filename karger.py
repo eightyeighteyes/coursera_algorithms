@@ -1,8 +1,8 @@
 import random
 
 
-def min_cut(matrix):
-    return min([karger(matrix) for _ in range(25)])
+def min_cut(matrix, cycles=100):
+    return min([karger(matrix) for _ in range(cycles)])
 
 
 def karger(matrix):

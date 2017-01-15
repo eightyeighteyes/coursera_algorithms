@@ -34,8 +34,8 @@ class Test_MakeEdges(unittest.TestCase):
         self.assertEqual(expected_edges, actual_edges)
 
     def test_parallel_edges(self):
-        test_nodes = {1: [2, 2, 4], 2: [1, 3, 4], 4: [2, 3]}
-        expected_edges = [(1, 2), (1, 2), (1, 4), (2, 1), (2, 3), (2, 4), (4, 2), (4, 3)]
+        test_nodes = {1: [2, 2, 4], 2: [1, 1, 3, 4], 4: [2, 3]}
+        expected_edges = [(1, 2), (1, 2), (1, 4), (2, 1), (2, 1), (2, 3), (2, 4), (4, 2), (4, 3)]
 
         actual_edges = make_edges(test_nodes)
 
