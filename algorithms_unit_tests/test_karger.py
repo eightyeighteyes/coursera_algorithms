@@ -102,7 +102,7 @@ class Test_CountEdges(unittest.TestCase):
         self.assertEqual(expected_count, actual_count)
 
     def test_parallel_edges(self):
-        test_nodes = {1: [2, 2, 4], 2: [1, 4], 4: [2]}
+        test_nodes = {1: [2, 2, 4], 2: [1, 1, 4], 4: [2]}
 
         expected_count = 4
 
